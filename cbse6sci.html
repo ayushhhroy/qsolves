@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 6 CBSE Chapters - Qsolves</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Lighter gray background */
+        }
+        #mobile-menu {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, opacity 0.3s ease-in-out;
+        }
+        #mobile-menu.open {
+            max-height: 200px;
+            opacity: 1;
+        }
+        .chapter-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .chapter-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Header and Navbar (Same as before) -->
+    <header class="bg-black shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <svg class="h-10 w-10 text-white mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                    </svg>
+                    <a href="index.html" class="text-white text-2xl font-bold">Qsolves</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="index.html" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                    <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                    <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Store</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                        <span class="sr-only">Open main menu</span>
+                        <svg id="icon-open" class="block h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+                        <svg id="icon-close" class="hidden h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="md:hidden" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="index.html" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                    <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+                    <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Store</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content: Chapter Selection -->
+    <main class="container mx-auto px-6 py-12 flex-grow">
+        <!-- Hero Section -->
+        <div class="text-center mb-12">
+            <h1 class="text-5xl font-extrabold text-gray-800">Class 6 Science</h1>
+            <p class="text-gray-600 mt-3 text-lg">CBSE curriculum ke chapters explore karein.</p>
+        </div>
+
+        <!-- Chapter Cards Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Chapter 1 -->
+            <a href="class6cbsech1.html" class="chapter-card bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
+                <div class="bg-blue-100 p-3 rounded-full"><svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+                <div><p class="font-semibold text-gray-800">Chapter 1</p><p class="text-sm text-gray-600">Food: Where Does It Come From?</p></div>
+            </a>
+            <!-- Chapter 2 -->
+            <a href="class6cbsech2.html" class="chapter-card bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
+                <div class="bg-green-100 p-3 rounded-full"><svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-12v4m-2-2h4m5 4v4m-2-2h4M17 3h4m-4 5v4m-2-2h4m-5 12v4m-2-2h4"></path></svg></div>
+                <div><p class="font-semibold text-gray-800">Chapter 2</p><p class="text-sm text-gray-600">Components of Food</p></div>
+            </a>
+            <!-- Chapter 3 -->
+            <a href="class6cbsech3.html" class="chapter-card bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
+                <div class="bg-purple-100 p-3 rounded-full"><svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"></path></svg></div>
+                <div><p class="font-semibold text-gray-800">Chapter 3</p><p class="text-sm text-gray-600">Fibre to Fabric</p></div>
+            </a>
+            <!-- Chapter 4 -->
+            <a href="class6cbsech4.html" class="chapter-card bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
+                <div class="bg-yellow-100 p-3 rounded-full"><svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg></div>
+                <div><p class="font-semibold text-gray-800">Chapter 4</p><p class="text-sm text-gray-600">Sorting Materials Into Groups</p></div>
+            </a>
+             <!-- Chapter 5 -->
+            <a href="class6cbsech5.html" class="chapter-card bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
+                <div class="bg-red-100 p-3 rounded-full"><svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+                <div><p class="font-semibold text-gray-800">Chapter 5</p><p class="text-sm text-gray-600">Separation of Substances</p></div>
+            </a>
+            <!-- Chapter 6 -->
+            <a href="class6cbsech6.html" class="chapter-card bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
+                <div class="bg-indigo-100 p-3 rounded-full"><svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h5M5.5 9.5L14.5 0.5M14.5 0.5L20 6M14.5 0.5L10 14.5M20 6L14.5 14.5m5.5-8.5L10 14.5m0 0L6 20"></path></svg></div>
+                <div><p class="font-semibold text-gray-800">Chapter 6</p><p class="text-sm text-gray-600">Changes Around Us</p></div>
+            </a>
+            <!-- Chapter 7 -->
+            <a href="class6cbsech7.html" class="chapter-card bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
+                <div class="bg-pink-100 p-3 rounded-full"><svg class="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+                <div><p class="font-semibold text-gray-800">Chapter 7</p><p class="text-sm text-gray-600">Getting to Know Plants</p></div>
+            </a>
+            <!-- Chapter 8 -->
+            <a href="class6cbsech8.html" class="chapter-card bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
+                <div class="bg-gray-100 p-3 rounded-full"><svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div>
+                <div><p class="font-semibold text-gray-800">Chapter 8</p><p class="text-sm text-gray-600">Body Movements</p></div>
+            </a>
+            <!-- Chapter 9 -->
+            <a href="class6cbsech9.html" class="chapter-card bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
+                <div class="bg-blue-100 p-3 rounded-full"><svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2h1a2 2 0 002-2v-1a2 2 0 012-2h1.945M7.8 14.95l.6-1.04M16.2 14.95l-.6-1.04M12 21a9 9 0 110-18 9 9 0 010 18z"></path></svg></div>
+                <div><p class="font-semibold text-gray-800">Chapter 9</p><p class="text-sm text-gray-600">The Living Organisms...</p></div>
+            </a>
+            <!-- Chapter 10 -->
+            <a href="class6cbsech10.html" class="chapter-card bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
+                <div class="bg-green-100 p-3 rounded-full"><svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+                <div><p class="font-semibold text-gray-800">Chapter 10</p><p class="text-sm text-gray-600">Motion and Measurement</p></div>
+            </a>
+            <!-- Chapter 11 -->
+            <a href="class6cbsech11.html" class="chapter-card bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
+                <div class="bg-purple-100 p-3 rounded-full"><svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg></div>
+                <div><p class="font-semibold text-gray-800">Chapter 11</p><p class="text-sm text-gray-600">Light, Shadows and Reflections</p></div>
+            </a>
+            <!-- Chapter 12 -->
+            <a href="class6cbsech12.html" class="chapter-card bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
+                <div class="bg-yellow-100 p-3 rounded-full"><svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div>
+                <div><p class="font-semibold text-gray-800">Chapter 12</p><p class="text-sm text-gray-600">Electricity and Circuits</p></div>
+            </a>
+            <!-- Chapter 13 -->
+            <a href="class6cbsech13.html" class="chapter-card bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
+                <div class="bg-red-100 p-3 rounded-full"><svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7.014A8.003 8.003 0 0112 3c1.372 0 2.704.343 3.865.953 2.486 2.014 2.986 5.014 2.986 7.014 2 1 2.657-1.343 2.657-1.343a8 8 0 01-4.852 9.043z"></path></svg></div>
+                <div><p class="font-semibold text-gray-800">Chapter 13</p><p class="text-sm text-gray-600">Fun with Magnets</p></div>
+            </a>
+            <!-- Chapter 14 -->
+            <a href="class6cbsech14.html" class="chapter-card bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
+                <div class="bg-indigo-100 p-3 rounded-full"><svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path></svg></div>
+                <div><p class="font-semibold text-gray-800">Chapter 14</p><p class="text-sm text-gray-600">Water</p></div>
+            </a>
+            <!-- Chapter 15 -->
+            <a href="class6cbsech15.html" class="chapter-card bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
+                <div class="bg-pink-100 p-3 rounded-full"><svg class="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path></svg></div>
+                <div><p class="font-semibold text-gray-800">Chapter 15</p><p class="text-sm text-gray-600">Air Around Us</p></div>
+            </a>
+            <!-- Chapter 16 -->
+            <a href="class6cbsech16.html" class="chapter-card bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
+                 <div class="bg-gray-100 p-3 rounded-full"><svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></div>
+                <div><p class="font-semibold text-gray-800">Chapter 16</p><p class="text-sm text-gray-600">Garbage In, Garbage Out</p></div>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer (Same as before) -->
+    <footer class="bg-black text-white mt-auto">
+        <div class="container mx-auto px-6 py-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Qsolves</h3>
+                    <p class="text-gray-400">Education ko behtar aur aasan banane ke liye aapka saathi. Hum Class 6 se 12 tak ke students ke liye top quality ke notes pradaan karte hain.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="text-gray-400">
+                        <li class="mb-2"><a href="index.html" class="hover:text-white">Home</a></li>
+                        <li class="mb-2"><a href="#" class="hover:text-white">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="hover:text-white">Contact</a></li>
+                        <li class="mb-2"><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.345 2.525c.636-.247 1.363-.416 2.427-.465C9.792 2.013 10.146 2 12.315 2zM12 7a5 5 0 100 10 5 5 0 000-10zm0-2a7 7 0 110 14 7 7 0 010-14zm6.406-2.25a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z" clip-rule="evenodd" /></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-gray-700 pt-6 text-center text-gray-400">
+                <p>&copy; 2024 Qsolves. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', function () {
+                const mobileMenu = document.getElementById('mobile-menu');
+                const openIcon = document.getElementById('icon-open');
+                const closeIcon = document.getElementById('icon-close');
+                mobileMenu.classList.toggle('open');
+                openIcon.classList.toggle('hidden');
+                closeIcon.classList.toggle('hidden');
+            });
+        }
+    </script>
+
+</body>
+</html>
+

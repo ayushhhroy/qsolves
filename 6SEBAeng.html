@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 7 Subjects - Qsolves</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Lighter gray background */
+        }
+        
+        /* --- ANIMATIONS START --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 40px, 0);
+            }
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        /* --- ANIMATIONS END --- */
+        
+        #mobile-menu {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, opacity 0.3s ease-in-out;
+        }
+        #mobile-menu.open {
+            max-height: 200px;
+            opacity: 1;
+        }
+        .subject-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            opacity: 0; /* Hide initial state for entrance animation */
+        }
+        .subject-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Header and Navbar - FADE IN (0.2s delay) -->
+    <header class="bg-black shadow-lg sticky top-0 z-50 animate-fadeIn" style="animation-delay: 0.2s; opacity: 0;">
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <svg class="h-10 w-10 text-white mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                    </svg>
+                    <a href="index.html" class="text-white text-2xl font-bold">Qsolves</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="index.html" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                    <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                    <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Store</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                        <span class="sr-only">Open main menu</span>
+                        <svg id="icon-open" class="block h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+                        <svg id="icon-close" class="hidden h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="md:hidden" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="index.html" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                    <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+                    <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Store</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content: Subject Selection -->
+    <main class="container mx-auto px-6 py-12 flex-grow">
+        <!-- Hero Section - FADE IN UP (0.4s delay) -->
+        <div class="text-center mb-12 animate-fadeInUp" style="animation-delay: 0.4s; opacity: 0;">
+            <h1 class="text-5xl font-extrabold text-gray-800">Class 7 Subjects</h1>
+            <p class="text-gray-600 mt-3 text-lg">Choose your subject and start learning with Qsolves</p>
+        </div>
+
+        <!-- Subject Cards Grid - Staggered FADE IN UP -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Science - 0.6s delay -->
+            <a href="7sci.html" class="subject-card bg-white p-6 rounded-lg shadow-md flex items-center space-x-4 animate-fadeInUp" style="animation-delay: 0.6s;">
+                <div class="bg-blue-100 p-3 rounded-full">
+                    <!-- Science Icon (Flask) -->
+                    <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.012-1.76l-5.416-3.126v-2.022a2 2 0 10-4 0v2.022L3.572 13.668a2 2 0 00-1.012 1.76v3.104a2 2 0 002 2h14a2 2 0 002-2v-3.104zM9 18v-2h6v2H9z"></path></svg>
+                </div>
+                <div><p class="font-semibold text-xl text-gray-800">Science</p></div>
+            </a>
+            
+            <!-- Mathematics - 0.8s delay -->
+            <a href="7math.html" class="subject-card bg-white p-6 rounded-lg shadow-md flex items-center space-x-4 animate-fadeInUp" style="animation-delay: 0.8s;">
+                <div class="bg-green-100 p-3 rounded-full">
+                    <!-- Mathematics Icon (Calculator) -->
+                    <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m-6 4h6m-6 4h6M5 3a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2H5z"></path></svg>
+                </div>
+                <div><p class="font-semibold text-xl text-gray-800">Mathematics</p></div>
+            </a>
+
+            <!-- English - 1.0s delay -->
+            <a href="7eng.html" class="subject-card bg-white p-6 rounded-lg shadow-md flex items-center space-x-4 animate-fadeInUp" style="animation-delay: 1.0s;">
+                <div class="bg-purple-100 p-3 rounded-full">
+                    <!-- English Icon (Book) -->
+                    <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                </div>
+                <div><p class="font-semibold text-xl text-gray-800">English</p></div>
+            </a>
+
+            <!-- Hindi - 1.2s delay -->
+            <a href="7hindi.html" class="subject-card bg-white p-6 rounded-lg shadow-md flex items-center space-x-4 animate-fadeInUp" style="animation-delay: 1.2s;">
+                <div class="bg-yellow-100 p-3 rounded-full">
+                    <!-- Hindi Icon (अ) -->
+                    <svg class="w-8 h-8 text-yellow-600" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-size="14" font-family="Inter, sans-serif" font-weight="bold">अ</text>
+                    </svg>
+                </div>
+                <div><p class="font-semibold text-xl text-gray-800">Hindi</p></div>
+            </a>
+
+            <!-- SST (Social Studies) - 1.4s delay -->
+            <a href="7sst.html" class="subject-card bg-white p-6 rounded-lg shadow-md flex items-center space-x-4 animate-fadeInUp" style="animation-delay: 1.4s;">
+                <div class="bg-red-100 p-3 rounded-full">
+                    <!-- SST Icon (Globe) -->
+                    <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2h1a2 2 0 002-2v-1a2 2 0 012-2h1.945M7.8 14.95l.6-1.04M16.2 14.95l-.6-1.04M12 21a9 9 0 110-18 9 9 0 010 18z"></path></svg>
+                </div>
+                <div><p class="font-semibold text-xl text-gray-800">Social Science</p></div>
+            </a>
+
+            <!-- Assamese - 1.6s delay -->
+            <a href="7assamese.html" class="subject-card bg-white p-6 rounded-lg shadow-md flex items-center space-x-4 animate-fadeInUp" style="animation-delay: 1.6s;">
+                <div class="bg-indigo-100 p-3 rounded-full">
+                    <!-- Assamese Icon (অ) - Using inline SVG text for Bengali/Assamese 'O' character -->
+                    <svg class="w-8 h-8 text-indigo-600" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-size="14" font-family="Inter, sans-serif" font-weight="bold">অ</text>
+                    </svg>
+                </div>
+                <div><p class="font-semibold text-xl text-gray-800">Assamese</p></div>
+            </a>
+
+        </div>
+    </main>
+
+    <!-- Footer - FADE IN (1.8s delay) -->
+    <footer class="bg-black text-white mt-auto animate-fadeIn" style="animation-delay: 1.8s; opacity: 0;">
+        <div class="container mx-auto px-6 py-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Qsolves</h3>
+                    <p class="text-gray-400">Education ko behtar aur aasan banane ke liye aapka saathi. Hum Class 6 se 12 tak ke students ke liye top quality ke notes pradaan karte hain.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="text-gray-400">
+                        <li class="mb-2"><a href="index.html" class="hover:text-white">Home</a></li>
+                        <li class="mb-2"><a href="#" class="hover:text-white">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="hover:text-white">Contact</a></li>
+                        <li class="mb-2"><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218 1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.345 2.525c.636-.247 1.363-.416 2.427-.465C9.792 2.013 10.146 2 12.315 2zM12 7a5 5 0 100 10 5 5 0 000-10zm0-2a7 7 0 110 14 7 7 0 010-14zm6.406-2.25a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z" clip-rule="evenodd" /></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-gray-700 pt-6 text-center text-gray-400">
+                <p>&copy; 2024 Qsolves. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', function () {
+                const mobileMenu = document.getElementById('mobile-menu');
+                const openIcon = document.getElementById('icon-open');
+                const closeIcon = document.getElementById('icon-close');
+                mobileMenu.classList.toggle('open');
+                openIcon.classList.toggle('hidden');
+                closeIcon.classList.toggle('hidden');
+            });
+        }
+    </script>
+
+</body>
+</html>
