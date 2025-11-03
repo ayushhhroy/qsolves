@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qsolves - Important Notes for Class 6-12</title>
+    
+    <!-- Manifest & Favicon -->
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        
+        /* --- ANIMATIONS START --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 40px, 0);
+            }
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        /* --- ANIMATIONS END --- */
+
+        .marquee-container {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            box-sizing: border-box;
+        }
+        .marquee-text {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 25s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+        
+        .board-options, .medium-options, .stream-options-cbse, .stream-options-seba, .medium-options-arts {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, opacity 0.4s ease-in-out;
+        }
+        
+        .board-options.visible, .medium-options.visible, .stream-options-cbse.visible, .stream-options-seba.visible, .medium-options-arts.visible {
+            opacity: 1;
+            max-height: 350px;
+        }
+
+        #mobile-menu {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, opacity 0.3s ease-in-out;
+        }
+        #mobile-menu.open {
+            max-height: 200px;
+            opacity: 1;
+        }
+        .class-card {
+            /* Keep transition for hover effect */
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; 
+            /* Ensure initial opacity is set by inline style for entrance animation */
+            opacity: 0; 
+        }
+        .class-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Header and Navbar - FADE IN (0.2s delay) -->
+    <header class="bg-black shadow-lg sticky top-0 z-50 order-1 animate-fadeIn" style="opacity: 0; animation-delay: 0.2s;">
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                   <svg class="h-10 w-10 text-white mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                    </svg>
+                    <a href="#" class="text-white text-2xl font-bold">Qsolves</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                    <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                    <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Store</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                        <span class="sr-only">Open main menu</span>
+                        <svg id="icon-open" class="block h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+                        <svg id="icon-close" class="hidden h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="md:hidden" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                    <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+                    <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Store</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Moving Text Section - FADE IN (0.4s delay) -->
+    <div class="marquee-container bg-white py-2 shadow-md order-2 animate-fadeIn" style="opacity: 0; animation-delay: 0.4s;">
+        <p class="marquee-text text-blue-600 font-semibold">
+            Here you will find important notes for classes 6 to 12 which are necessary for exams.
+        </p>
+    </div>
+
+    <!-- Video Section: Order changes based on screen size -->
+    <div class="video-container relative w-full overflow-hidden order-3 md:order-4" style="padding-top: 56.25%;">
+        <video id="auto-video" autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover pointer-events-none">
+            <!-- NOTE: The 'intro2.0.mp4' file will not load in this environment, but the code structure is correct. -->
+            <source src="intro2.0.mp4" type="video/mp4"> 
+            <!-- Fallback placeholder if video fails to load -->
+            <div class="absolute top-0 left-0 w-full h-full bg-gray-900 flex items-center justify-center">
+                <p class="text-white text-lg">Your browser does not support the video tag.</p>
+            </div>
+        </video>
+    </div>
+
+    <!-- Main Content: Class Selection. Order changes based on screen size -->
+    <main class="container mx-auto px-6 py-12 flex-grow order-4 md:order-3">
+        <!-- Title Section - FADE IN UP (0.6s delay) -->
+        <div class="text-center mb-12 animate-fadeInUp" style="opacity: 0; animation-delay: 0.6s;">
+            <h1 class="text-5xl font-extrabold text-gray-800">Select Your Class</h1>
+            <p class="text-gray-600 mt-3 text-lg">Notes paane ke liye neeche diye gaye class par click karein.</p>
+        </div>
+
+        <!-- Class Cards Grid - Staggered FADE IN UP -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Class 6 - 0.8s delay -->
+            <div class="class-card bg-white p-4 rounded-lg shadow-md animate-fadeInUp" style="animation-delay: 0.8s;">
+                <button class="class-btn w-full text-left flex items-center space-x-4 p-2">
+                    <div class="bg-blue-100 p-3 rounded-full"><span class="text-xl font-bold text-blue-600">6</span></div>
+                    <div><p class="font-bold text-lg text-gray-800">Class 6</p></div>
+                </button>
+                <div class="board-options mt-3 space-y-2 px-2 pb-2">
+                    <a href="6CBSE.html" class="block font-semibold py-2 px-4 rounded-lg w-full bg-gray-800 text-white hover:bg-gray-700 transition-colors text-center">CBSE Board</a>
+                    <div>
+                        <button class="seba-btn block font-semibold py-2 px-4 rounded-lg w-full bg-gray-800 text-white hover:bg-gray-700 transition-colors">SEBA Board</button>
+                        <div class="medium-options mt-2 space-y-2">
+                           <a href="6SEBAeng.html" class="block font-semibold py-2 px-4 rounded-lg w-full bg-teal-500 text-white hover:bg-teal-600 transition-colors text-center">English Medium</a>
+                           <a href="6SEBAass.html" class="block font-semibold py-2 px-4 rounded-lg w-full bg-teal-500 text-white hover:bg-teal-600 transition-colors text-center">Assamese Medium</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Class 7 - 1.0s delay -->
+            <div class="class-card bg-white p-4 rounded-lg shadow-md animate-fadeInUp" style="animation-delay: 1.0s;">
+                <button class="class-btn w-full text-left flex items-center space-x-4 p-2">
+                    <div class="bg-green-100 p-3 rounded-full"><span class="text-xl font-bold text-green-600">7</span></div>
+                    <div><p class="font-bold text-lg text-gray-800">Class 7</p></div>
+                </button>
+                    <div class="board-options mt-3 space-y-2 px-2 pb-2">
+                       <a href="7CBSE.html" class="block font-semibold py-2 px-4 rounded-lg w-full bg-gray-800 text-white hover:bg-gray-700 transition-colors text-center">CBSE Board</a>
+                       <div>
+                            <button class="seba-btn block font-semibold py-2 px-4 rounded-lg w-full bg-gray-800 text-white hover:bg-gray-700 transition-colors">SEBA Board</button>
+                            <div class="medium-options mt-2 space-y-2">
+                               <a href="7SEBAeng.html" class="block font-semibold py-2 px-4 rounded-lg w-full bg-teal-500 text-white hover:bg-teal-600 transition-colors text-center">English Medium</a>
+                               <a href="7SEBAass.html" class="block font-semibold py-2 px-4 rounded-lg w-full bg-teal-500 text-white hover:bg-teal-600 transition-colors text-center">Assamese Medium</a>
+                            </div>
+                       </div>
+                    </div>
+            </div>
+
+            <!-- Class 8 - 1.2s delay -->
+            <div class="class-card bg-white p-4 rounded-lg shadow-md animate-fadeInUp" style="animation-delay: 1.2s;">
+                <button class="class-btn w-full text-left flex items-center space-x-4 p-2">
+                    <div class="bg-purple-100 p-3 rounded-full"><span class="text-xl font-bold text-purple-600">8</span></div>
+                    <div><p class="font-bold text-lg text-gray-800">Class 8</p></div>
+                </button>
+                    <div class="board-options mt-3 space-y-2 px-2 pb-2">
+                       <a href="8CBSE.html" class="block font-semibold py-2 px-4 rounded-lg w-full bg-gray-800 text-white hover:bg-gray-700 transition-colors text-center">CBSE Board</a>
+                       <div>
+                            <button class="seba-btn block font-semibold py-2 px-4 rounded-lg w-full bg-gray-800 text-white hover:bg-gray-700 transition-colors">SEBA Board</button>
+                            <div class="medium-options mt-2 space-y-2">
+                               <a href="8SEBAeng.html" class="block font-semibold py-2 px-4 rounded-lg w-full bg-teal-500 text-white hover:bg-teal-600 transition-colors text-center">English Medium</a>
+                               <a href="8SEBAass.html" class="block font-semibold py-2 px-4 rounded-lg w-full bg-teal-500 text-white hover:bg-teal-600 transition-colors text-center">Assamese Medium</a>
+                            </div>
+                       </div>
+                    </div>
+            </div>
+
+            <!-- Class 9 - 1.4s delay -->
+            <div class="class-card bg-white p-4 rounded-lg shadow-md animate-fadeInUp" style="animation-delay: 1.4s;">
+                <button class="class-btn w-full text-left flex items-center space-x-4 p-2">
+                    <div class="bg-yellow-100 p-3 rounded-full"><span class="text-xl font-bold text-yellow-600">9</span></div>
+                    <div><p class="font-bold text-lg text-gray-800">Class 9</p></div>
+                </button>
+                    <div class="board-options mt-3 space-y-2 px-2 pb-2">
+                       <a href="9CBSE.html" class="block font-semibold py-2 px-4 rounded-lg w-full bg-gray-800 text-white hover:bg-gray-700 transition-colors text-center">CBSE Board</a>
+                       <div>
+                            <button class="seba-btn block font-semibold py-2 px-4 rounded-lg w-full bg-gray-800 text-white hover:bg-gray-700 transition-colors">SEBA Board</button>
+                            <div class="medium-options mt-2 space-y-2">
+                               <a href="9SEBAeng.html" class="block font-semibold py-2 px-4 rounded-lg w-full bg-teal-500 text-white hover:bg-teal-600 transition-colors text-center">English Medium</a>
+                               <a href="9SEBAass.html" class="block font-semibold py-2 px-4 rounded-lg w-full bg-teal-500 text-white hover:bg-teal-600 transition-colors text-center">Assamese Medium</a>
+                            </div>
+                       </div>
+                    </div>
+            </div>
+            
+            <!-- Class 10 - 1.6s delay -->
+            <div class="class-card bg-white p-4 rounded-lg shadow-md animate-fadeInUp" style="animation-delay: 1.6s;">
+                <button class="class-btn w-full text-left flex items-center space-x-4 p-2">
+                    <div class="bg-red-100 p-3 rounded-full"><span class="text-xl font-bold text-red-600">10</span></div>
+                    <div><p class="font-bold text-lg text-gray-800">Class 10</p></div>
+                </button>
+                    <div class="board-options mt-3 space-y-2 px-2 pb-2">
+                       <a href="10CBSE.html" class="block font-semibold py-2 px-4 rounded-lg w-full bg-gray-800 text-white hover:bg-gray-700 transition-colors text-center">CBSE Board</a>
+                       <div>
+                            <button class="seba-btn block font-semibold py-2 px-4 rounded-lg w-full bg-gray-800 text-white hover:bg-gray-700 transition-colors">SEBA Board</button>
+                            <div class="medium-options mt-2 space-y-2">
+                               <a href="10SEBAeng.html" class="block font-semibold py-2 px-4 rounded-lg w-full bg-teal-500 text-white hover:bg-teal-600 transition-colors text-center">English Medium</a>
+                               <a href="10SEBAass.html" class="block font-semibold py-2 px-4 rounded-lg w-full bg-teal-500 text-white hover:bg-teal-600 transition-colors text-center">Assamese Medium</a>
+                            </div>
+                       </div>
+                    </div>
+            </div>
+
+            <!-- Class 11 - 1.8s delay -->
+            <div class="class-card bg-white p-4 rounded-lg shadow-md animate-fadeInUp" style="animation-delay: 1.8s;">
+                <button class="class-btn w-full text-left flex items-center space-x-4 p-2">
+                    <div class="bg-indigo-100 p-3 rounded-full"><span class="text-xl font-bold text-indigo-600">11</span></div>
+                    <div><p class="font-bold text-lg text-gray-800">Class 11</p></div>
+                </button>
+                <div class="board-options mt-3 space-y-2 px-2 pb-2">
+                    <!-- CBSE Section -->
+                    <div>
+                        <button class="cbse-btn block font-semibold py-2 px-4 rounded-lg w-full bg-gray-800 text-white hover:bg-gray-700 transition-colors">CBSE Board</button>
+                        <div class="stream-options-cbse mt-2 space-y-2">
+                            <a href="#" onclick="showNotes(11, 'CBSE - Science'); return false;" class="block font-semibold py-2 px-4 rounded-lg w-full bg-teal-500 text-white hover:bg-teal-600 transition-colors text-center">SCIENCE</a>
+                            <a href="#" onclick="showNotes(11, 'CBSE - Arts'); return false;" class="block font-semibold py-2 px-4 rounded-lg w-full bg-teal-500 text-white hover:bg-teal-600 transition-colors text-center">ARTS</a>
+                        </div>
+                    </div>
+                    <!-- SEBA Section -->
+                    <div>
+                        <button class="seba-btn block font-semibold py-2 px-4 rounded-lg w-full bg-gray-800 text-white hover:bg-gray-700 transition-colors">SEBA Board</button>
+                        <div class="stream-options-seba mt-2 space-y-2">
+                            <a href="#" onclick="showNotes(11, 'SEBA - Science'); return false;" class="block font-semibold py-2 px-4 rounded-lg w-full bg-teal-500 text-white hover:bg-teal-600 transition-colors text-center">SCIENCE</a>
+                            <button class="arts-btn block font-semibold py-2 px-4 rounded-lg w-full bg-teal-500 text-white hover:bg-teal-600 transition-colors">ARTS</button>
+                            <div class="medium-options-arts mt-2 space-y-2">
+                                <a href="seba11eng.html" class="block font-semibold py-2 px-4 rounded-lg w-full bg-purple-500 text-white hover:bg-purple-600 transition-colors text-center">English Medium</a>
+                                <a href="seba11ass.html" class="block font-semibold py-2 px-4 rounded-lg w-full bg-purple-500 text-white hover:bg-purple-600 transition-colors text-center">Assamese Medium</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Class 12 - 2.0s delay -->
+            <div class="class-card bg-white p-4 rounded-lg shadow-md animate-fadeInUp" style="animation-delay: 2.0s;">
+                <button class="class-btn w-full text-left flex items-center space-x-4 p-2">
+                    <div class="bg-pink-100 p-3 rounded-full"><span class="text-xl font-bold text-pink-600">12</span></div>
+                    <div><p class="font-bold text-lg text-gray-800">Class 12</p></div>
+                </button>
+                <div class="board-options mt-3 space-y-2 px-2 pb-2">
+                    <!-- CBSE Section -->
+                    <div>
+                        <button class="cbse-btn block font-semibold py-2 px-4 rounded-lg w-full bg-gray-800 text-white hover:bg-gray-700 transition-colors">CBSE Board</button>
+                        <div class="stream-options-cbse mt-2 space-y-2">
+                            <a href="#" onclick="showNotes(12, 'CBSE - Science'); return false;" class="block font-semibold py-2 px-4 rounded-lg w-full bg-teal-500 text-white hover:bg-teal-600 transition-colors text-center">SCIENCE</a>
+                            <a href="#" onclick="showNotes(12, 'CBSE - Arts'); return false;" class="block font-semibold py-2 px-4 rounded-lg w-full bg-teal-500 text-white hover:bg-teal-600 transition-colors text-center">ARTS</a>
+                        </div>
+                    </div>
+                    <!-- SEBA Section -->
+                    <div>
+                        <button class="seba-btn block font-semibold py-2 px-4 rounded-lg w-full bg-gray-800 text-white hover:bg-gray-700 transition-colors">SEBA Board</button>
+                        <div class="stream-options-seba mt-2 space-y-2">
+                            <a href="#" onclick="showNotes(12, 'SEBA - Science'); return false;" class="block font-semibold py-2 px-4 rounded-lg w-full bg-teal-500 text-white hover:bg-teal-600 transition-colors text-center">SCIENCE</a>
+                            <button class="arts-btn block font-semibold py-2 px-4 rounded-lg w-full bg-teal-500 text-white hover:bg-teal-600 transition-colors">ARTS</button>
+                            <div class="medium-options-arts mt-2 space-y-2">
+                                <a href="seba12eng.html" class="block font-semibold py-2 px-4 rounded-lg w-full bg-purple-500 text-white hover:bg-purple-600 transition-colors text-center">English Medium</a>
+                                <a href="seba12ass.html" class="block font-semibold py-2 px-4 rounded-lg w-full bg-purple-500 text-white hover:bg-purple-600 transition-colors text-center">Assamese Medium</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Notes Display Section - FADE IN (2.2s delay) -->
+        <div id="notes-section" class="mt-16 bg-white p-8 rounded-xl shadow-lg hidden animate-fadeIn" style="opacity: 0; animation-delay: 2.2s;">
+            <h2 id="notes-title" class="text-3xl font-bold text-gray-800 mb-4"></h2>
+            <div id="notes-content" class="text-gray-700 leading-relaxed"></div>
+        </div>
+    </main>
+
+    <!-- Footer - FADE IN (2.4s delay) -->
+    <footer class="bg-black text-white mt-auto order-5 animate-fadeIn" style="opacity: 0; animation-delay: 2.4s;">
+        <div class="container mx-auto px-6 py-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Qsolves</h3>
+                    <p class="text-gray-400">Education ko behtar aur aasan banane ke liye aapka saathi. Hum Class 6 se 12 tak ke students ke liye top quality ke notes pradaan karte hain.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="text-gray-400">
+                        <li class="mb-2"><a href="#" class="hover:text-white">Home</a></li>
+                        <li class="mb-2"><a href="#" class="hover:text-white">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="hover:text-white">Contact</a></li>
+                        <li class="mb-2"><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.345 2.525c.636-.247 1.363-.416 2.427-.465C9.792 2.013 10.146 2 12.315 2zM12 7a5 5 0 100 10 5 5 0 000-10zm0-2a7 7 0 110 14 7 7 0 010-14zm6.406-2.25a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z" clip-rule="evenodd" /></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-gray-700 pt-6 text-center text-gray-400">
+                <p>&copy; 2025 Qsolves. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const video = document.getElementById('auto-video');
+
+        if (video) {
+            // Ensure it always loops even if user tries to pause (soft enforcement)
+            video.addEventListener('ended', () => {
+                video.play();
+            });
+
+            video.addEventListener('pause', () => {
+                // Check if the pause was intentional (e.g., by user) vs. programmatic
+                if (!video.ended) {
+                     video.play().catch(error => console.log("Video play interrupted:", error));
+                }
+            });
+
+            // Optional: Disable right-click context menu on the video
+            video.addEventListener('contextmenu', e => e.preventDefault());
+        }
+        
+        // PWA: Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then(registration => {
+                    console.log('ServiceWorker registered successfully:', registration.scope);
+                }).catch(err => {
+                    console.log('ServiceWorker registration failed:', err);
+                });
+            });
+        }
+
+        // JavaScript for mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', function () {
+                const mobileMenu = document.getElementById('mobile-menu');
+                const openIcon = document.getElementById('icon-open');
+                const closeIcon = document.getElementById('icon-close');
+                mobileMenu.classList.toggle('open');
+                openIcon.classList.toggle('hidden');
+                closeIcon.classList.toggle('hidden');
+            });
+        }
+
+        // --- UPDATED TOGGLE LOGIC (Kept as is) ---
+
+        // Toggle board options (Level 1)
+        document.querySelectorAll('.class-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const parentCard = button.closest('.class-card');
+                const boardOptions = parentCard.querySelector('.board-options');
+                const isOpening = !boardOptions.classList.contains('visible');
+
+                // Close all other open class cards completely
+                document.querySelectorAll('.class-card').forEach(card => {
+                    if (card !== parentCard) {
+                        card.querySelectorAll('.visible').forEach(el => el.classList.remove('visible'));
+                    }
+                });
+
+                // Toggle the current card's board-options
+                boardOptions.classList.toggle('visible', isOpening);
+
+                // If we are closing this card, also close all its children
+                if (!isOpening) {
+                    boardOptions.querySelectorAll('.visible').forEach(el => el.classList.remove('visible'));
+                }
+            });
+        });
+
+        // Toggle stream options (Level 2 - CBSE)
+        document.querySelectorAll('.cbse-btn').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const parent = button.parentElement;
+                const streamOptions = button.nextElementSibling;
+                const isOpening = !streamOptions.classList.contains('visible');
+
+                // Close sibling options (SEBA streams and mediums)
+                const boardOptions = button.closest('.board-options');
+                boardOptions.querySelector('.stream-options-seba')?.classList.remove('visible');
+                boardOptions.querySelector('.medium-options-arts')?.classList.remove('visible');
+
+                // Toggle current
+                streamOptions.classList.toggle('visible', isOpening);
+            });
+        });
+
+        // Toggle stream options (Level 2 - SEBA)
+        document.querySelectorAll('.seba-btn').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const streamOptions = button.nextElementSibling;
+                const isOpening = !streamOptions.classList.contains('visible');
+                
+                // Find the parent .board-options and then query within it
+                const boardOptions = button.closest('.board-options');
+                
+                // Close sibling options (CBSE streams)
+                boardOptions.querySelector('.stream-options-cbse')?.classList.remove('visible');
+
+                // Toggle current
+                streamOptions.classList.toggle('visible', isOpening);
+                
+                // If we are closing this, close its children
+                if (!isOpening) {
+                     streamOptions.querySelector('.medium-options-arts')?.classList.remove('visible');
+                }
+            });
+        });
+
+        // Toggle medium options (Level 3 - SEBA Arts)
+        document.querySelectorAll('.arts-btn').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const mediumOptions = button.nextElementSibling;
+                mediumOptions.classList.toggle('visible');
+            });
+        });
+        
+        // --- END OF UPDATED TOGGLE LOGIC ---
+
+        // Show dummy notes content
+        function showNotes(classNum, boardStream) {
+            const notesSection = document.getElementById('notes-section');
+            const notesTitle = document.getElementById('notes-title');
+            const notesContent = document.getElementById('notes-content');
+
+            if (notesSection && notesTitle && notesContent) {
+                notesSection.classList.remove('hidden');
+                notesSection.classList.add('animate-fadeIn'); /* Add animation to notes section reveal */
+                notesTitle.innerText = `Notes for Class ${classNum} - ${boardStream}`;
+                notesContent.innerHTML = `
+                    <p class="mb-4">Yahan Class ${classNum} (${boardStream}) ke notes upload kiye jayenge. Abhi ke liye, yeh ek placeholder hai.</p>
+                    <p>Jald hi yahan aapko chapter-wise notes, important questions aur solutions milenge.</p>
+                    <p class="mt-4 font-semibold">Stay tuned for updates!</p>
+                `;
+                notesSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+    </script>
+
+</body>
+</html>
